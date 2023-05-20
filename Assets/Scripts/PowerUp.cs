@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Car;
 
@@ -12,6 +13,7 @@ public class PowerUp : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        carController.PlayCoins();
         carController.MaxSpeed += 50;
         Destroy(transform.parent.gameObject);
     }

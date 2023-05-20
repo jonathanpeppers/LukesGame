@@ -46,6 +46,7 @@ namespace UnityStandardAssets.Vehicles.Car
         private float m_CurrentTorque;
         private Rigidbody m_Rigidbody;
         private const float k_ReversingThreshold = 0.01f;
+        private AudioSource audioSource;
 
         public bool Skidding { get; private set; }
         public float BrakeInput { get; private set; }
@@ -58,6 +59,7 @@ namespace UnityStandardAssets.Vehicles.Car
         // Use this for initialization
         private void Start()
         {
+            audioSource = GetComponent<AudioSource>();
             m_WheelMeshLocalRotations = new Quaternion[4];
             for (int i = 0; i < 4; i++)
             {
@@ -103,6 +105,10 @@ namespace UnityStandardAssets.Vehicles.Car
             return (1.0f - value)*from + value*to;
         }
 
+        public void PlayCoins()
+        {
+            audioSource.Play();
+        }
 
         private void CalculateGearFactor()
         {
